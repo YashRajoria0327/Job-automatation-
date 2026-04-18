@@ -163,6 +163,20 @@ pip install -r requirements.txt
 
 ---
 
+
+## CI / Build checks
+
+This repository now includes `pyproject.toml`, so GitHub Actions jobs that run `python -m build` (or package build checks) succeed on Python 3.9+ environments.
+
+Local validation command:
+
+```bash
+python -m pip install --upgrade build
+python -m build
+```
+
+---
+
 ## Next enhancements
 
 - Integrate real-time job scraping from job boards.
