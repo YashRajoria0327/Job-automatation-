@@ -51,6 +51,7 @@ Job-automatation-/
 ├── job_matcher.py       # Candidate/job data models + match scoring
 ├── resume_builder.py    # ATS resume generation logic
 ├── sample_jobs.json     # Sample job dataset (replace with real jobs later)
+├── job_sources.json     # Curated source websites directory (agencies + company career pages)
 ├── requirements.txt     # Python dependencies
 └── README.md            # Documentation
 ```
@@ -116,6 +117,8 @@ Then open the local URL shown in terminal (usually `http://localhost:8501`).
 ## Data source and customization
 
 By default jobs are loaded from `sample_jobs.json`.
+
+The dashboard also includes a **Reference Job Websites Directory** loaded from `job_sources.json` (global agencies, UAE, Netherlands, Denmark, Sweden/EU companies) so you can quickly identify better data sources.
 You can also upload a custom JSON file in the sidebar (**Upload jobs JSON**) without restarting the app.
 
 Tip: If you are not seeing relevant jobs, either upload a better source file or lower the minimum match slider to 60-65%.

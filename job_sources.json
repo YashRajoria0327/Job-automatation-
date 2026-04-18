@@ -1,0 +1,46 @@
+[
+  {"name":"Randstad","region":"Global","type":"Agency","website":"https://www.randstad.com","career_url":"https://www.randstad.com"},
+  {"name":"Adecco","region":"Global","type":"Agency","website":"https://www.adecco.com","career_url":"https://www.adecco.com"},
+  {"name":"Hays","region":"Global","type":"Agency","website":"https://www.hays.com","career_url":"https://www.hays.com"},
+  {"name":"Michael Page","region":"Global","type":"Agency","website":"https://www.michaelpage.com","career_url":"https://www.michaelpage.com"},
+  {"name":"Amrop","region":"Global","type":"Agency","website":"https://www.amrop.com","career_url":"https://www.amrop.com"},
+
+  {"name":"ABC Recruitment","region":"UAE","type":"Agency","website":"https://www.abcrecruitment.ae","career_url":"https://www.abcrecruitment.ae","email":"career@abcrecruitment.ae, recruit@abcrecruitment.ae"},
+  {"name":"Accell HR Consulting","region":"UAE","type":"Agency","website":"https://www.accel-hrconsulting.com","career_url":"https://www.accel-hrconsulting.com","email":"info@accelhrc.com"},
+  {"name":"Dragon Recruiting","region":"UAE","type":"Agency","website":"https://www.dragonrecruiting.net","career_url":"https://www.dragonrecruiting.net","email":"contact@dragonrecruiting.net"},
+
+  {"name":"English Job Search NL","region":"Netherlands","type":"Job Board","website":"https://englishjobsearch.nl","career_url":"https://englishjobsearch.nl"},
+  {"name":"YoungCapital Jobs","region":"Netherlands","type":"Job Board","website":"https://www.youngcapital.nl/jobs-in","career_url":"https://www.youngcapital.nl/jobs-in"},
+  {"name":"Tempo-Team Jobs","region":"Netherlands","type":"Job Board","website":"https://www.tempo-team.nl/english/employees/jobs-in-the-netherlands","career_url":"https://www.tempo-team.nl/english/employees/jobs-in-the-netherlands"},
+  {"name":"IamExpat Jobs","region":"Netherlands","type":"Job Board","website":"https://www.iamexpat.nl/career/jobs-netherlands","career_url":"https://www.iamexpat.nl/career/jobs-netherlands"},
+  {"name":"Welcome to NL Jobs","region":"Netherlands","type":"Job Board","website":"https://www.welcome-to-nl.nl/jobs/","career_url":"https://www.welcome-to-nl.nl/jobs/"},
+
+  {"name":"Capgemini Danmark","region":"Denmark","type":"Company","website":"https://www.capgemini.com/dk-en/careers","career_url":"https://www.capgemini.com/dk-en/careers"},
+  {"name":"Capital Four","region":"Denmark","type":"Company","website":"https://www.capital-four.com/career","career_url":"https://www.capital-four.com/career"},
+  {"name":"CARBUCKS","region":"Denmark","type":"Company","website":"https://carbucks.dk/job-i-carbucks/","career_url":"https://carbucks.dk/job-i-carbucks/"},
+  {"name":"CARGLASS","region":"Denmark","type":"Company","website":"https://belron.wd3.myworkdayjobs.com/Carglass_Careers","career_url":"https://belron.wd3.myworkdayjobs.com/Carglass_Careers"},
+  {"name":"Carlsberg","region":"Denmark","type":"Company","website":"https://careers.carlsberg.com/CarlsbergDK/","career_url":"https://careers.carlsberg.com/CarlsbergDK/"},
+
+  {"name":"Emirates Group","region":"UAE","type":"Company","website":"https://www.emiratesgroupcareers.com","career_url":"https://www.emiratesgroupcareers.com","email":"careers@emiratesgroupcareers.com"},
+  {"name":"Etisalat (e&) Group","region":"UAE","type":"Company","website":"https://careers.eand.com","career_url":"https://careers.eand.com","email":"talent@eand.com"},
+  {"name":"Emaar Group","region":"UAE","type":"Company","website":"https://careers.emaar.com","career_url":"https://careers.emaar.com","email":"recruitment@emaar.ae"},
+  {"name":"Aramex","region":"UAE","type":"Company","website":"https://www.aramex.com/careers","career_url":"https://www.aramex.com/careers","email":"hr@aramex.com"},
+  {"name":"DP World","region":"UAE","type":"Company","website":"https://careers.dpworld.com","career_url":"https://careers.dpworld.com","email":"careers@dpworld.com"},
+  {"name":"Majid Al Futtaim","region":"UAE","type":"Company","website":"https://www.majidalfuttaim.com/careers","career_url":"https://www.majidalfuttaim.com/careers","email":"careers@maf.co.ae"},
+  {"name":"Emirates NBD","region":"UAE","type":"Company","website":"https://www.emiratesnbd.com/en/careers","career_url":"https://www.emiratesnbd.com/en/careers","email":"recruitment@emiratesnbd.com"},
+
+  {"name":"Hunter Bond","region":"UK/EU","type":"Agency","website":"https://www.hunterbond.com","career_url":"https://www.hunterbond.com"},
+  {"name":"Harnham","region":"UK/EU","type":"Agency","website":"https://www.harnham.com","career_url":"https://www.harnham.com"},
+  {"name":"A2Z-CM","region":"Netherlands","type":"Agency","website":"https://www.a2z-cm.com","career_url":"https://www.a2z-cm.com"},
+  {"name":"Bullhorn Consultants","region":"Global","type":"Agency","website":"https://www.bullhorn.com","career_url":"https://www.bullhorn.com"},
+
+  {"name":"ABB","region":"Sweden/EU","type":"Company","website":"https://global.abb/group/en/careers","career_url":"https://global.abb/group/en/careers"},
+  {"name":"Alstom","region":"Sweden/EU","type":"Company","website":"https://jobsearch.alstom.com","career_url":"https://jobsearch.alstom.com"},
+  {"name":"AstraZeneca","region":"Sweden/EU","type":"Company","website":"https://careers.astrazeneca.com","career_url":"https://careers.astrazeneca.com"},
+  {"name":"Atlas Copco","region":"Sweden/EU","type":"Company","website":"https://www.atlascopco.com/en/careers","career_url":"https://www.atlascopco.com/en/careers"},
+  {"name":"Einride","region":"Sweden/EU","type":"Company","website":"https://careers.einride.tech","career_url":"https://careers.einride.tech"},
+  {"name":"Epiroc","region":"Sweden/EU","type":"Company","website":"https://www.epirocgroup.com/en/careers","career_url":"https://www.epirocgroup.com/en/careers"},
+  {"name":"Klarna","region":"Sweden/EU","type":"Company","website":"https://www.klarna.com/careers","career_url":"https://www.klarna.com/careers"},
+  {"name":"Spotify","region":"Sweden/EU","type":"Company","website":"https://www.lifeatspotify.com/jobs","career_url":"https://www.lifeatspotify.com/jobs"},
+  {"name":"Volvo Group","region":"Sweden/EU","type":"Company","website":"https://www.volvogroup.com/en/careers.html","career_url":"https://www.volvogroup.com/en/careers.html"}
+]

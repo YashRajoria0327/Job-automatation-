@@ -26,6 +26,11 @@ def load_jobs_from_upload(uploaded_file) -> list[JobPosting]:
     return [JobPosting(**item) for item in raw]
 
 
+
+@st.cache_data
+def load_job_sources(path: str = "job_sources.json") -> list[dict]:
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
 st.sidebar.header("Basic Requirements")
 full_name = st.sidebar.text_input("Full name", value="Your Name")
 email = st.sidebar.text_input("Email", value="you@example.com")
@@ -146,6 +151,31 @@ else:
                     f"✅ Applied to **{match_result.job.title}** at **{match_result.job.company}** — "
                     f"[{match_result.job.apply_link}]({match_result.job.apply_link})"
                 )
+
+
+st.divider()
+st.subheader("Reference Job Websites Directory")
+source_records = load_job_sources()
+source_frame = pd.DataFrame(source_records)
+
+col1, col2 = st.columns(2)
+selected_region = col1.selectbox(
+    "Filter source region",
+    options=["All"] + sorted(source_frame["region"].dropna().unique().tolist()),
+)
+selected_type = col2.selectbox(
+    "Filter source type",
+    options=["All"] + sorted(source_frame["type"].dropna().unique().tolist()),
+)
+
+filtered_sources = source_frame.copy()
+if selected_region != "All":
+    filtered_sources = filtered_sources[filtered_sources["region"] == selected_region]
+if selected_type != "All":
+    filtered_sources = filtered_sources[filtered_sources["type"] == selected_type]
+
+st.caption("Use these links as trusted sources to collect job postings and upload JSON into this dashboard.")
+st.dataframe(filtered_sources, use_container_width=True)
 
 with st.expander("How this match score is calculated"):
     st.markdown(
