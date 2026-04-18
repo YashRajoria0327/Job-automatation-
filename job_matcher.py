@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from difflib import SequenceMatcher
 from typing import Iterable, List, Sequence
 
 
@@ -38,24 +39,68 @@ VISA_WEIGHT = 0.10
 RESUME_WEIGHT = 0.05
 
 
+_TITLE_ALIASES = {
+    "oci": "oracle cloud infrastructure",
+    "dba": "database administrator",
+}
+
+
+def _normalize_token(value: str) -> str:
+    normalized = value.strip().lower().replace("_", " ").replace("-", " ")
+    return " ".join(normalized.split())
+
+
 def _normalize_tokens(items: Iterable[str]) -> set[str]:
     normalized = set()
     for item in items:
         if not item:
             continue
-        token = item.strip().lower()
+        token = _normalize_token(item)
         if token:
             normalized.add(token)
     return normalized
 
 
+def _expand_aliases(token: str) -> set[str]:
+    expanded = {token}
+    words = token.split()
+    for word in words:
+        if word in _TITLE_ALIASES:
+            expanded.add(_TITLE_ALIASES[word])
+    if token in _TITLE_ALIASES:
+        expanded.add(_TITLE_ALIASES[token])
+    return expanded
+
+
+def _title_match_score(target_titles: Sequence[str], job_title: str) -> float:
+    if not target_titles:
+        return 0.0
+
+    normalized_job_title = _normalize_token(job_title)
+    best_score = 0.0
+
+    for raw_target in target_titles:
+        target = _normalize_token(raw_target)
+        for candidate in _expand_aliases(target):
+            if candidate in normalized_job_title:
+                best_score = max(best_score, 1.0)
+                continue
+
+            sequence_score = SequenceMatcher(None, candidate, normalized_job_title).ratio()
+            target_words = set(candidate.split())
+            job_words = set(normalized_job_title.split())
+            overlap = len(target_words & job_words) / max(1, len(target_words))
+            blended_score = max(sequence_score, overlap)
+            best_score = max(best_score, blended_score)
+
+    return min(best_score, 1.0)
+
+
 def calculate_match(profile: CandidateProfile, job: JobPosting) -> MatchResult:
     score = 0.0
 
-    title_tokens = _normalize_tokens(profile.target_titles)
-    job_title = job.title.lower()
-    if title_tokens and any(token in job_title for token in title_tokens):
-        score += TITLE_WEIGHT
+    title_score = _title_match_score(profile.target_titles, job.title)
+    score += TITLE_WEIGHT * title_score
 
     if profile.years_experience >= job.min_experience:
         score += EXPERIENCE_WEIGHT

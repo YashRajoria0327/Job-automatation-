@@ -16,12 +16,15 @@ st.caption("Provide requirements, shortlist matching jobs, and generate ATS-frie
 
 
 @st.cache_data
-def load_jobs(path: str = "sample_jobs.json") -> list[JobPosting]:
+def load_jobs_from_file(path: str = "sample_jobs.json") -> list[JobPosting]:
     raw = json.loads(Path(path).read_text(encoding="utf-8"))
     return [JobPosting(**item) for item in raw]
 
 
-jobs = load_jobs()
+def load_jobs_from_upload(uploaded_file) -> list[JobPosting]:
+    raw = json.loads(uploaded_file.getvalue().decode("utf-8"))
+    return [JobPosting(**item) for item in raw]
+
 
 st.sidebar.header("Basic Requirements")
 full_name = st.sidebar.text_input("Full name", value="Your Name")
@@ -45,6 +48,30 @@ base_summary = st.sidebar.text_area(
     value="Results-driven engineer with strong automation and backend experience.",
 )
 
+st.sidebar.header("Job Source")
+minimum_match = st.sidebar.slider("Minimum match score (%)", min_value=40, max_value=95, value=70, step=5)
+job_source_mode = st.sidebar.radio(
+    "Choose job source",
+    options=["Built-in sample jobs", "Upload jobs JSON"],
+)
+uploaded_jobs_file = None
+if job_source_mode == "Upload jobs JSON":
+    uploaded_jobs_file = st.sidebar.file_uploader(
+        "Upload jobs JSON (array of job objects)",
+        type=["json"],
+        key="jobs-json",
+    )
+
+if uploaded_jobs_file is not None:
+    try:
+        jobs = load_jobs_from_upload(uploaded_jobs_file)
+        st.info(f"Loaded {len(jobs)} jobs from uploaded JSON.")
+    except Exception as error:
+        st.error(f"Could not parse uploaded jobs JSON: {error}")
+        jobs = load_jobs_from_file()
+else:
+    jobs = load_jobs_from_file()
+
 profile = CandidateProfile(
     years_experience=float(years_experience),
     target_titles=[item.strip() for item in target_titles.split(",") if item.strip()],
@@ -53,11 +80,14 @@ profile = CandidateProfile(
     resume_uploaded=resume is not None,
 )
 
-matches = filter_matching_jobs(profile=profile, jobs=jobs, minimum_score=70.0)
+matches = filter_matching_jobs(profile=profile, jobs=jobs, minimum_score=float(minimum_match))
 
-st.subheader("Matching Jobs (>= 70%)")
+st.subheader(f"Matching Jobs (>= {minimum_match}%)")
 if not matches:
-    st.warning("No jobs currently meet the 70% threshold. Try adjusting skills or title preferences.")
+    st.warning(
+        "No jobs currently meet the selected threshold. "
+        "Try lowering minimum score or upload a better-targeted job source file."
+    )
 else:
     rows = []
     for result in matches:
@@ -120,10 +150,26 @@ else:
 with st.expander("How this match score is calculated"):
     st.markdown(
         """
-        - **30%**: Title match
+        - **30%**: Title match (supports aliases like OCI -> Oracle Cloud Infrastructure)
         - **20%**: Experience match
         - **35%**: Core skill overlap
         - **10%**: Visa sponsorship fit
         - **5%**: Resume uploaded
         """
+    )
+
+with st.expander("Uploaded jobs JSON schema example"):
+    st.code(
+        '''[
+  {
+    "title": "Oracle Cloud Infrastructure Administrator",
+    "company": "Example Corp",
+    "location": "Remote",
+    "min_experience": 4,
+    "skills": ["oracle cloud", "linux", "oracle rac", "oracle database"],
+    "visa_sponsorship": true,
+    "apply_link": "https://example.com/apply"
+  }
+]''',
+        language="json",
     )

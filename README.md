@@ -7,7 +7,7 @@ Automation starter for job searching and applying.
 This project helps you:
 - Capture your job application preferences (experience, job title, skills, visa support, resume).
 - Match your profile to available jobs using a weighted score.
-- Show only jobs with a score of **70% or higher**.
+- Show jobs using an adjustable match score threshold (default **70%**).
 - Select matched jobs and click one button to apply.
 - Generate ATS-friendly resumes customized for each selected job.
 
@@ -22,8 +22,8 @@ This project helps you:
    - Core skill set
    - Visa sponsorship requirement
    - Resume file upload
-2. **Match engine runs** against the available jobs.
-3. **Dashboard filters results** and displays only jobs with >= 70% match.
+2. **Match engine runs** against available jobs from built-in sample data or uploaded JSON source.
+3. **Dashboard filters results** based on your selected minimum score.
 4. You **select jobs** you want to apply to.
 5. The app **builds ATS-friendly resumes** for each selected role.
 6. You click **Apply to Selected Jobs** to queue/apply.
@@ -115,8 +115,10 @@ Then open the local URL shown in terminal (usually `http://localhost:8501`).
 
 ## Data source and customization
 
-Currently jobs are loaded from `sample_jobs.json`.
-You can replace this file with your own scraped or collected job data.
+By default jobs are loaded from `sample_jobs.json`.
+You can also upload a custom JSON file in the sidebar (**Upload jobs JSON**) without restarting the app.
+
+Tip: If you are not seeing relevant jobs, either upload a better source file or lower the minimum match slider to 60-65%.
 
 Expected JSON fields per job:
 - `title`
