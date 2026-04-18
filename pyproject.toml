@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "job-automation-starter"
+version = "0.1.0"
+description = "Streamlit-based job matching and ATS resume automation starter"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "Job Automation" }
+]
+dependencies = [
+  "streamlit>=1.35.0",
+  "pandas>=2.2.0"
+]
+
+[tool.setuptools]
+py-modules = ["dashboard", "job_matcher", "resume_builder"]

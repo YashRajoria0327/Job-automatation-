@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Oracle Cloud Infrastructure Administrator",
+    "company": "CloudAxis",
+    "location": "Remote - US",
+    "min_experience": 4,
+    "skills": ["oracle cloud", "linux", "oracle rac", "oracle database"],
+    "visa_sponsorship": true,
+    "apply_link": "https://example.com/jobs/cloudaxis-oci-admin"
+  },
+  {
+    "title": "Oracle DBA (OCI)",
+    "company": "DataFort",
+    "location": "Dallas, TX",
+    "min_experience": 4,
+    "skills": ["oracle database", "oracle rac", "linux", "performance tuning"],
+    "visa_sponsorship": true,
+    "apply_link": "https://example.com/jobs/datafort-oracle-dba"
+  },
+  {
+    "title": "Senior Oracle Database Administrator",
+    "company": "InfraStack",
+    "location": "Remote - India",
+    "min_experience": 5,
+    "skills": ["oracle database", "oracle cloud", "backup recovery", "linux"],
+    "visa_sponsorship": false,
+    "apply_link": "https://example.com/jobs/infrastack-sr-dba"
+  },
+  {
+    "title": "Python Automation Engineer",
+    "company": "FlowByte",
+    "location": "Remote - US",
+    "min_experience": 2,
+    "skills": ["python", "playwright", "api", "sql"],
+    "visa_sponsorship": true,
+    "apply_link": "https://example.com/jobs/flowbyte-python-automation"
+  },
+  {
+    "title": "QA Automation Specialist",
+    "company": "TestOrbit",
+    "location": "Remote - Canada",
+    "min_experience": 1,
+    "skills": ["python", "selenium", "pytest", "ci/cd"],
+    "visa_sponsorship": true,
+    "apply_link": "https://example.com/jobs/testorbit-qa"
+  }
+]
